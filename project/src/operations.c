@@ -21,11 +21,11 @@ aircraft_node* read_aircraft_node() {
 void print_list(const aircraft_node* head) {
     while (head) {
         if (head->data.aircraft_name) {
-            printf("%zd %zd %zd %zd %zd %s\n", head->data.name, head->data.model, head->data.usage, 
-            head->data.crew_size, head->data.range_of_flight, head->data.aircraft_name);
+            printf("%zd %zd %zd %zd %zd %s\n", head->data.name, head->data.model, head->data.usage,
+                   head->data.crew_size, head->data.range_of_flight, head->data.aircraft_name);
         } else {
-            printf("%zd %zd %zd %zd %zd invalid_aircraft_name\n", head->data.name, head->data.model, 
-            head->data.usage, head->data.crew_size, head->data.range_of_flight);
+            printf("%zd %zd %zd %zd %zd invalid_aircraft_name\n", head->data.name, head->data.model,
+                   head->data.usage, head->data.crew_size, head->data.range_of_flight);
         }
         head = head->next;
     }

@@ -17,7 +17,7 @@ a b c 618 1835 aircraft_name_15
 a b c 612 3043 aircraft_name_16
 a b c 8 5248 aircraft_name_17
 a b c 24 4320 aircraft_name_18
-a b c 525 2913 aircrafty_name_19
+a b c 525 2913 aircraft_name_19
 a b c 400 6119 aircraft_name_20
 a b c 47 1395 aircraft_name_21
 a b c 974 2922 aircraft_name_22
@@ -35,7 +35,7 @@ a b c 943 9489 aircraft_name_33
 a b c 564 9657 aircraft_name_34
 a b c 386 8084 aircraft_name_35
 a b c 16 3047 aircraft_name_36
-a b c 231 977 country_name_37
+a b c 231 977 aircraft_name_37
 a b c 242 6843 aircraft_name_38
 a b c 684 4402 aircraft_name_39
 a b c 610 1221 aircraft_name_40

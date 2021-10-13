@@ -25,8 +25,7 @@ int insert_node(aircraft_node** head, aircraft_node* insertable) {
     }
     if (previous) {
         previous->next = insertable;
-    }
-    else {
+    } else {
         *head = insertable;
     }
     insertable->next = current;
@@ -43,5 +42,5 @@ void free_list(aircraft_node* head) {
 }
 
 int is_less(const double lhs, const double rhs) {
-    return !(fabs(lhs - rhs) < DBL_EPSILON || lhs > rhs);
+    return !(fabs(lhs - rhs) < DBL_EPSILON || lhs > rhs, "\n");
 }

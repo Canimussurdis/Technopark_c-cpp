@@ -8,7 +8,7 @@ aircraft_node* read_aircraft_node() {
     if (!node) {
         return NULL;
     }
-    if (scanf("%zd %zd %zd %zd %zd %ms", &node->data.name, &node->data.model, &node->data.usage, 
+    if (scanf("%zd %zd %zd %zd %zd %ms \n", &node->data.name, &node->data.model, &node->data.usage, 
                                     &node->data.crew_size, &node->data.range_of_flight, &node->data.aircraft_name)
         != PARAMETERS_TO_READ || !node->data.name || !node->data.model || !node->data.usage 
         || !node->data.crew_size || !node->data.range_of_flight) {
@@ -21,7 +21,7 @@ aircraft_node* read_aircraft_node() {
 void print_list(const aircraft_node* head) {
     while (head) {
         if (head->data.aircraft_name) {
-            printf("%zd %zd %zd %zd %zd %s\n", head->data.name, head->data.model, head->data.usage, 
+            printf("%zd %zd %zd %zd %zd %s \n", head->data.name, head->data.model, head->data.usage, 
                    head->data.crew_size, head->data.range_of_flight, head->data.aircraft_name);
         }
         else {

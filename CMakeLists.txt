@@ -28,8 +28,8 @@ set(TEST_DATA_DIR ${CMAKE_SOURCE_DIR}/project/data)
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS} include)
 
-add_executable(${EXE_NAME} testing/src/main.cpp ${HW_SRC}
-               testing/src/operations_tests.cpp testing/src/utils.cpp testing/src/management_tests.cpp)
+add_executable(${EXE_NAME} /testing/src/main.cpp ${HW_SRC}
+               /testing/src/operations_tests.cpp /testing/src/utils.cpp /testing/src/management_tests.cpp)
 target_link_libraries(${EXE_NAME} ${GTEST_BOTH_LIBRARIES} pthread stdc++fs)
 
 add_test(NAME IOTest COMMAND ${EXE_NAME} ${TEST_DATA_DIR} ${TEST_SEED} --gtest_filter=OPERATIONS_TEST.*)

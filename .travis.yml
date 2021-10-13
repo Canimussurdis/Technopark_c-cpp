@@ -1,0 +1,11 @@
+language: cpp
+
+dist: focal #20.04 (Focal Fossa)
+
+os: linux
+compiler:
+    - g++
+
+branches:
+  only:
+    - assignment_1

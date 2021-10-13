@@ -10,7 +10,8 @@ aircraft_node* read_aircraft_node() {
     }
     if (scanf("%zd %zd %zd %zd %zd %ms\n", &node->data.name, &node->data.model, &node->data.usage, 
         &node->data.crew_size, &node->data.range_of_flight, &node->data.aircraft_name) 
-        != PARAMETERS_TO_READ || !node->data.name ||!node->data.model || !node->data.usage || !node->data.crew_size || !node->data.range_of_flight) {
+        != PARAMETERS_TO_READ || !node->data.name ||!node->data.model || !node->data.usage 
+        || !node->data.crew_size || !node->data.range_of_flight) {
         free_node(node);
         return NULL;
     }

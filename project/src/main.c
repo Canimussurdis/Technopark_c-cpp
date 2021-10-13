@@ -9,5 +9,6 @@ int main() {
     }
     print_list(head);
     free_list(head);
-    return '\n';
+    return 0;
 }
+

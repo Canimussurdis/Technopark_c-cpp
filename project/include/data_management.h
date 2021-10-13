@@ -26,7 +26,7 @@ typedef struct aircraft_node {
 // Creates a new node.
 aircraft_node* create_node();
 
-//Frees up the memory allocated to the node.
+// Frees up the memory allocated to the node.
 void free_node(aircraft_node* node);
 
 // Adds insertable to the linked list before the first node greater than or equal to insertable.

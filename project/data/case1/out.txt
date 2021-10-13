@@ -1,0 +1,52 @@
+a b c 954 155 country_name_244
+a b c 284 51 country_name_208
+a b c 712 166 country_name_171
+a b c 373 92 country_name_205
+a b c 769 244 country_name_237
+a b c 896 315 country_name_100
+a b c 165 70 country_name_128
+a b c 962 453 country_name_58
+a b c 859 408 country_name_168
+a b c 860 465 country_name_29
+a b c 440 255 country_name_98
+a b c 927 741 country_name_77
+a b c 936 842 country_name_201
+a b c 966 932 country_name_190
+a b c 941 1015 country_name_206
+a b c 799 903 country_name_164
+a b c 972 1196 country_name_90
+a b c 460 581 country_name_6
+a b c 915 1159 country_name_79
+a b c 599 770 country_name_109
+a b c 267 369 country_name_145
+a b c 571 885 country_name_56
+a b c 371 636 country_name_83
+a b c 995 1772 country_name_239
+a b c 881 1613 country_name_111
+a b c 993 1819 country_name_14
+a b c 509 937 country_name_222
+a b c 941 1744 country_name_175
+a b c 174 344 country_name_42
+a b c 610 1221 country_name_40
+a b c 676 1376 country_name_179
+a b c 786 1617 country_name_202
+a b c 997 2419 country_name_189
+a b c 943 2288 country_name_108
+a b c 696 1866 country_name_167
+a b c 531 1449 country_name_152
+a b c 998 2849 country_name_144
+a b c 618 1835 country_name_15
+a b c 974 2922 country_name_22
+a b c 693 2222 country_name_131
+a b c 446 1561 country_name_4
+a b c 907 3181 country_name_122
+a b c 681 2396 country_name_151
+a b c 648 2280 country_name_124
+a b c 697 2518 country_name_141
+a b c 57 206 country_name_10
+a b c 966 3568 3.69 country_name_63
+a b c 15 56 3.73 country_name_72
+a b c 521 1960 3.76 country_name_57
+a b c 451 1706 3.78 country_name_31
+a b c 845 3254 3.85 country_name_59
+

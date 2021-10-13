@@ -27,5 +27,4 @@ script:
   - valgrind --tool=memcheck ./TP-HW1 < $CWD/project/data/case1/in.txt
   - cd ./project
   - touch custom_in.txt
-  - valgrind --tool=memcheck ./TP-TESTING-HW1 $CWD/project/data 55
   - bash <(curl -s https://codecov.io/bash)

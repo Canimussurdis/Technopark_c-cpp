@@ -11,9 +11,16 @@ branches:
     - assignment_1
 
 install:
-  - CWD=$PWD
-  - source ./ci/install.sh
-  - cd $CWD/ci && unzip cpplint.zip && cd ..
+  - sudo apt update
+  - sudo apt install cmake
+  - sudo apt install cppcheck
+  - sudo apt install valgrind
+  - sudo apt install clang-format
+  - sudo apt install lcov
+  - sudo apt install libgtest-dev
+  - cd /usr/src/gtest
+  - sudo cmake .
+  - cd -
   
   before_install:
   - test -n $TRAVIS_COMPILER && unset TRAVIS_COMPILER
@@ -23,13 +30,15 @@ install:
   - test -n $CC_FOR_BUILD && unset CC_FOR_BUILD
   - test -n $CC && unset CC
   
-  script:
-  - mkdir build
-  - cd build
-  - cmake ..
-  - cmake --build .
-  - valgrind --tool=memcheck ./TP-HW1 < $CWD/project/data/case1/in.txt
-  - cd ./project/testing
-  - touch custom_in.txt
-  - valgrind --tool=memcheck ./TP-TESTING-HW1 $CWD/project/data 55
-  - bash <(curl -s https://codecov.io/bash)
+   script:
+   - sudo cmake .
+    - sudo make
+    - cppcheck main.c ./src --inconclusive --enable=all --language=c --suppress=missingInclude
+# --suppress=missingInclude reason: cppcheck wrongfully thinks I do not have includes (while I have them)
+    - valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --leak-resolution=med  --track-origins=yes ./tests || travis_terminate 1
+
+
+after_script:
+    - lcov --capture  --directory . --output-file coverage.info
+    - bash <(curl -s https://codecov.io/bash) -f coverage.info
+

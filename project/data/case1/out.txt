@@ -4,7 +4,7 @@ a b c 860 465 aircraft_name_29
 a b c 460 581 aircraft_name_6
 a b c 4 651 aircraft_name_32
 a b c 231 977 aircraft_name_37
-a	b	c	610	1221	aircraft_name_40
+a b c 610 1221 aircraft_name_40
 a b c 47 1395 aircraft_name_21
 a b c 100 1560 aircraft_name_5
 a b c 446 1561 aircraft_name_4

@@ -8,13 +8,21 @@ extern const std::string IN_STREAM_FILE;
 class IO_TEST : public testing::Test {
 public:
 
-    
+    /*
+     * Redirects the stream to the file.
+     */
     int switchStreamToFile(const std::string &file, FILE *stream, const std::string &mode);
-
+    
+    /*
+     * Binds the stream to the passed descripton
+     */
     void switchBackStream(int originalDescriptor, FILE *stream);
     void flush();
     std::string getTestOutput();
     
+    /*
+     * Configures stdin to read the filePath from the passed path
+     */
     void setTestInput(const std::string &filePath);
     void clearTestOutput();
     void clearTestInput();

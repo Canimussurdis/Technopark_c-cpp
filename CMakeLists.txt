@@ -23,7 +23,7 @@ enable_testing()
 
 set(EXE_NAME TP-TESTING-HW1)
 set(TEST_SEED 42)
-set(TEST_DATA_DIR ${CMAKE_SOURCE_DIR}/project/data)
+set(TEST_DATA_DIR ${CMAKE_SOURCE_DIR}/project/testing/data)
 
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS} include)

@@ -24,7 +24,7 @@ script:
   - cd build
   - cmake ..
   - cmake --build .
-  - cppcheck main.c ./src --inconclusive --enable=all --language=c --suppress=missingInclude
+  - cppcheck main.c  /TP-HW1 $CWD/project/src --inconclusive --enable=all --language=c --suppress=missingInclude
   - cd ./project/testing
   - valgrind --tool=memcheck --track-origins=yes --error-exitcode=1 ./TP-TESTING-HW1 $CWD/project/testing/data 55
   - touch custom_in.txt

@@ -24,9 +24,8 @@ script:
   - cd build
   - cmake ..
   - cmake --build .
-  - valgrind --tool=memcheck --track-origins=yes --error-exitcode=1 ./TP-HW1 < $CWD/project/testing/data/case1/in.txt
+  - valgrind --tool=memcheck --track-origins=yes --error-exitcode=1 ./testing/data/case1/in.txt
   - cppcheck main.c ./src --inconclusive --enable=all --language=c --suppress=missingInclude
   - cd ./project/testing
-  - valgrind --tool=memcheck ./TP-TESTING-HW1 $CWD/project/testing/data 55
   - touch custom_in.txt
   - bash <(curl -s https://codecov.io/bash)

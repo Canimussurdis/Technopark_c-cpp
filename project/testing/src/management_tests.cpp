@@ -63,6 +63,7 @@ TEST(MANAGEMENT_TEST, INSERT_NODE_1) {
   ASSERT_EQ(head, node.get());
 }
 
+/*
 TEST(MANAGEMENT_TEST, INSERT_NODE_2) {
   std::array<aircraft_node, LIST_LENGTH> nodes = {0, 0, 0, 0, 0, nullptr, nullptr};
   aircraft_node *head = nullptr;
@@ -92,6 +93,7 @@ TEST(MANAGEMENT_TEST, INSERT_NODE_2) {
     current = current->next;
   }
 }
+*/
 
 TEST(MANAGEMENT_TEST, COMPARISON_EQUAL) {
   ASSERT_EQ(is_less(DOUBLE_BIG_1, DOUBLE_BIG_1), 0);

@@ -10,6 +10,7 @@ extern "C" {
 const std::string ERROR_AIRCRAFT_NAME = "0 0 0 0 0 error_aircraft_name\n";
 namespace fs = std::experimental::filesystem;
 
+/*
 TEST_F(IO_TEST, RRINT_ERROR_AIRCRAFT) {
     auto node = std::make_shared<aircraft_node>();
     node->data.name = 0;
@@ -38,4 +39,4 @@ TEST_F(IO_TEST, COMPLEX_TEST) {
         clearTestOutput();
     }
 }
-
+*/

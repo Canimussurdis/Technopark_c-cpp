@@ -10,7 +10,7 @@ struct date {
 };
 
 // convert to string format (for year)
-int to_string(int value, char* string);
+int to_string(int value, char* str);
 
 // get the current date
 struct date get_current_date();
@@ -19,7 +19,7 @@ struct date get_current_date();
 int month_to_quarter(int month);
 
 // formatting date "year-month-day"
-void format_date(char* string, const struct date date);
+void format_date(char* str, const struct date date);
 
 // convert to date format (for month and day)
 void to_date_format(int value, char* str);

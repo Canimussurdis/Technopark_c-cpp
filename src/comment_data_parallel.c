@@ -21,28 +21,28 @@ struct args {
 };
 
 void* thread_count_comments(void* arg) {
-    struct args* a = arg;
+    struct args* args = arg;
 
     int flt_amount = 0;
-    int i = a->ln_offset;
-    struct comment_data* c = malloc(sizeof(*c));
-    if (c == NULL) {
+    int i = args->ln_offset;
+    struct comment_data* comment = malloc(sizeof(*comment));
+    if (comment == NULL) {
         pthread_exit((void*)(uintptr_t)-2);
     }
-    while (i < a->ln_offset + a->ln_amount) {
-        if (!parse_comment(c, a->c_data[i])) {
-            free(c);
+    while (i < args->ln_offset + args->ln_amount) {
+        if (!parse_comment(comment, args->c_data[i])) {
+            free(comment);
             pthread_exit((void*)(uintptr_t)-3);
         }
 
-        if (is_comment_in_last_q(*c) && c->average_score > a->avg_score) {
+        if (is_comment_in_last_quater(*comment) && comment->average_score > args->avg_score) {
             flt_amount++;
         }
-        free(a->c_data[i]);  // to free memory as soon as possible
-        a->c_data[i] = NULL;  // to prevent free() of freed memory
+        free(args->c_data[i]);  // to free memory as soon as possible
+        args->c_data[i] = NULL;  // to prevent free() of freed memory
         i++;
     }
-    free(c);
+    free(comment);
 
     pthread_exit((void*)(uintptr_t)flt_amount);
 }
@@ -61,25 +61,25 @@ int count_actual_comments(const char* fpath, int avg_score) {
 
     int errflag;
     pthread_t* threads = malloc(nthreads * sizeof(*threads));
-    struct args* a[nthreads];
+    struct args* arg[nthreads];
 
     for (int i = 0; i < nthreads; i++) {
-        a[i] = malloc(sizeof(*a[i]));
-        a[i]->c_data = c_data;
-        a[i]->avg_score = avg_score;
-        a[i]->ln_offset = ln_per_thread * i;
-        a[i]->ln_amount = ln_per_thread;
+        arg[i] = malloc(sizeof(*arg[i]));
+        arg[i]->c_data = c_data;
+        arg[i]->avg_score = avg_score;
+        arg[i]->ln_offset = ln_per_thread * i;
+        arg[i]->ln_amount = ln_per_thread;
         if (i + 1 == nthreads) {
-            a[i]->ln_amount += ln_remains;
+            arg[i]->ln_amount += ln_remains;
         }
 
         errflag = pthread_create(
-            &threads[i], NULL, thread_count_comments, a[i]);
+            &threads[i], NULL, thread_count_comments, arg[i]);
         if (errflag != 0) {
             free(threads);
             free_arr((void**)c_data, ln_amount);
             free(c_data);
-            free_arr((void**)a, nthreads);
+            free_arr((void**)arg, nthreads);
             return -4;
         }
     }
@@ -92,15 +92,15 @@ int count_actual_comments(const char* fpath, int avg_score) {
             free(threads);
             free_arr((void**)c_data, ln_amount);
             free(c_data);
-            free_arr((void**)a, nthreads);
+            free_arr((void**)arg, nthreads);
             return -3;
         }
         flt_amount += ln_amnt;
-        free(a[i]);
-        a[i] = NULL;
+        free(arg[i]);
+        arg[i] = NULL;
     }
     free(threads);
-    free(c_data);  // elements of an array alreay freed inside threads
+    free(c_data);  
 
     return flt_amount;
 }

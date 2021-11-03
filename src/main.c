@@ -1,4 +1,8 @@
-﻿#include <stdio.h>
+/* 
+* Copyright 2021 Canimussurdis
+*/
+
+#include <stdio.h>
 
 #include "include/comment_data.h"
 

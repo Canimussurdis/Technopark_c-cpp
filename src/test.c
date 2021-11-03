@@ -1,3 +1,7 @@
+/* 
+* Copyright 2021 Canimussurdis
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -41,9 +45,11 @@ START_TEST(date_utils_test) {
     int a = 1, b = 12;
     char* string = malloc(3 * sizeof(*string));
     to_date_format(a, string);
-    fail_unless(string[0] == '0' && string[1] == '1' && string[2] == 0, "to_d_form");
+    fail_unless(string[0] == '0' && string[1] == '1'
+                && string[2] == 0, "to_d_form");
     to_date_format(b, string);
-    fail_unless(string[0] == '1' && string[1] == '2' && string[2] == 0, "to_d_form");
+    fail_unless(string[0] == '1' && string[1] == '2'
+                && string[2] == 0, "to_d_form");
 } END_TEST
 
 START_TEST(comment_data_test) {
@@ -54,8 +60,8 @@ START_TEST(comment_data_test) {
     fail_unless(comment->id == 9, "parse_comment");
     fail_unless(abs(comment->average_score - 2.56) < 0.01, "parse_comment");
     fail_unless(comment->score_amount == 9022, "parse_comment");
-    fail_unless(comment->last_date.year == 2020 && comment->last_date.month == 6 && comment->last_date.day == 21,
-        "parse_comment");
+    fail_unless(comment->last_date.year == 2020 && comment->last_date.month == 6
+                && comment->last_date.day == 21, "parse_comment");
     fail_unless(comment->last_score == 1, "parse_comment");
     fail_unless(parse_comment(comment, bad_comment_s) == false, "parse_comment");
 

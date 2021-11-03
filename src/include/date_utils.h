@@ -6,7 +6,7 @@ struct date {
 };
 
 // convert to string format (for year)
-int to_string(int v, char* string);
+int to_string(int value, char* string);
 
 // get the current date
 struct date get_current_date();
@@ -18,6 +18,6 @@ int month_to_quarter(int month);
 void format_date(char* string, const struct date date);
 
 // convert to date format (for month and day)
-void to_date_format(int v, char* string);
+void to_date_format(int value, char* string);
 
 #endif  // SRC_INCLUDE_DATE_UTILS_H_

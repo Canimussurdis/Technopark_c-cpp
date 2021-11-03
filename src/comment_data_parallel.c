@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <inttypes.h>
 #include <pthread.h>
+
 #ifdef __APPLE__
 #define get_nprocs() 4
 #else
@@ -104,3 +105,4 @@ int count_actual_comments(const char* fpath, int avg_score) {
 
     return flt_amount;
 }
+

@@ -8,10 +8,10 @@
 
 struct comment_data {
     int id;
-    float score_average;
+    float average_score;
     int score_amount;
     struct date ld;
-    int score_last;
+    int last_score;
 };
 
 bool parse_comment(struct comment_data* c, char* s);

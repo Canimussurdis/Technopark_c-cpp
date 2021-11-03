@@ -6,7 +6,7 @@
 
 #include "include/date_utils.h"
 
-int to_string(int value, char* string) {
+int to_string(int value, char* str) {
     int len = 0;
     int a[32];
     while (value > 0) {
@@ -14,9 +14,9 @@ int to_string(int value, char* string) {
         value /= 10;
     }
     for (int i = len - 1; i >= 0; i--) {
-        string[len - i - 1] = a[i] + 48;
+        str[len - i - 1] = a[i] + 48;
     }
-    string[len] = 0;
+    str[len] = 0;
 
     return --len;
 }
@@ -49,18 +49,18 @@ int month_to_quarter(int month) {
     }
 }
 
-void format_date(char* string, const struct date date) {
+void format_date(char* str, const struct date date) {
     char buf[3];
-    int len = to_string(date.year, string);
-    string[len + 1] = '-';
+    int len = to_string(date.year, str);
+    str[len + 1] = '-';
     to_date_format(date.month, buf);
-    string[len + 2] = buf[0];
-    string[len + 3] = buf[1];
-    string[len + 4] = '-';
+    str[len + 2] = buf[0];
+    str[len + 3] = buf[1];
+    str[len + 4] = '-';
     to_date_format(date.day, buf);
-    string[len + 5] = buf[0];
-    string[len + 6] = buf[1];
-    string[len + 7] = 0;
+    str[len + 5] = buf[0];
+    str[len + 6] = buf[1];
+    str[len + 7] = 0;
 }
 
 void to_date_format(int value, char* str) {

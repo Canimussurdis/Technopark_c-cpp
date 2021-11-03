@@ -12,22 +12,22 @@ int count_actual_comments(const char* fpath, int avg_score) {
     }
 
     int filtered_amount = 0;
-    struct comment_data* c = malloc(sizeof(*c));
+    struct comment_data* comment = malloc(sizeof(*comment));
     int i = 0;
     while (i < ln_amount) {
-        if (!parse_comment(c, c_data[i])) {
+        if (!parse_comment(comment, c_data[i])) {
             free_arr((void**)c_data, ln_amount);
             free(c_data);
             return -3;
         }
 
-        if (is_comment_in_last_q(*c) && c->average_score > avg_score) {
+        if (is_comment_in_last_quater(*comment) && comment->average_score > avg_score) {
             filtered_amount++;
         }
         i++;
     }
 
-    free(c);
+    free(comment);
     free_arr((void**)c_data, ln_amount);
     free(c_data);
 

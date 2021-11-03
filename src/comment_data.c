@@ -32,6 +32,5 @@ bool is_comment_in_last_quater(const struct comment_data comment) {
         last_quater = 4;
         quater_year--;
     }
-
     return (last_quater == upd_quater) && (quater_year == comment.last_date.year);
 }

@@ -1,3 +1,7 @@
+/*
+* Copyright 2021 Canimussurdis
+*/
+
 #ifndef SRC_INCLUDE_RANDOM_DATA_CREATION_H_
 #define SRC_INCLUDE_RANDOM_DATA_CREATION_H_
 

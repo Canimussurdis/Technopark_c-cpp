@@ -24,3 +24,4 @@ bool is_comment_in_last_quater(const struct comment_data comment);
 int count_actual_comments(const char* fpath, int avg_score);
 
 #endif  // SRC_INCLUDE_COMMENT_DATA_H_
+

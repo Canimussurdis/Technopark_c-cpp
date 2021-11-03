@@ -21,3 +21,4 @@ void format_date(char* string, const struct date date);
 void to_date_format(int value, char* string);
 
 #endif  // SRC_INCLUDE_DATE_UTILS_H_
+

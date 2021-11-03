@@ -33,55 +33,55 @@ START_TEST(date_utils_test) {
     time_t t = time(NULL);
     struct tm buf;
     struct tm dt = *localtime_r(&t, &buf);
-    struct date d = get_current_date();
-    fail_unless(d.y == (dt.tm_year + 1900), "cur_date");
-    fail_unless(d.m == (dt.tm_mon + 1), "cur_date");
-    fail_unless(d.d == (dt.tm_mday), "cur_date");
+    struct date date = get_current_date();
+    fail_unless(date.year == (dt.tm_year + 1900), "cur_date");
+    fail_unless(date.month == (dt.tm_mon + 1), "cur_date");
+    fail_unless(date.day == (dt.tm_mday), "cur_date");
 
     int a = 1, b = 12;
-    char* s = malloc(3 * sizeof(*s));
-    to_date_format(a, s);
-    fail_unless(s[0] == '0' && s[1] == '1' && s[2] == 0, "to_d_form");
-    to_date_format(b, s);
-    fail_unless(s[0] == '1' && s[1] == '2' && s[2] == 0, "to_d_form");
+    char* string = malloc(3 * sizeof(*string));
+    to_date_format(a, string);
+    fail_unless(string[0] == '0' && string[1] == '1' && string[2] == 0, "to_d_form");
+    to_date_format(b, string);
+    fail_unless(string[0] == '1' && string[1] == '2' && string[2] == 0, "to_d_form");
 } END_TEST
 
 START_TEST(comment_data_test) {
     char* ok_comment_s = "9 2.56 9022 2020-06-21 1";
     char* bad_comment_s = "9 WOLF";
-    struct comment_data* c = malloc(sizeof(*c));
-    fail_unless(parse_comment(c, ok_comment_s) == true, "parse_comment");
-    fail_unless(c->id == 9, "parse_comment");
-    fail_unless(abs(c->average_score - 2.56) < 0.01, "parse_comment");
-    fail_unless(c->score_amount == 9022, "parse_comment");
-    fail_unless(c->ld.y == 2020 && c->ld.m == 6 && c->ld.d == 21,
+    struct comment_data* comment = malloc(sizeof(*comment));
+    fail_unless(parse_comment(comment, ok_comment_s) == true, "parse_comment");
+    fail_unless(comment->id == 9, "parse_comment");
+    fail_unless(abs(comment->average_score - 2.56) < 0.01, "parse_comment");
+    fail_unless(comment->score_amount == 9022, "parse_comment");
+    fail_unless(comment->last_date.year == 2020 && comment->last_date.month == 6 && comment->last_date.day == 21,
         "parse_comment");
-    fail_unless(c->last_score == 1, "parse_comment");
-    fail_unless(parse_comment(c, bad_comment_s) == false, "parse_comment");
+    fail_unless(comment->last_score == 1, "parse_comment");
+    fail_unless(parse_comment(comment, bad_comment_s) == false, "parse_comment");
 
-    struct date d = get_current_date();
-    c->ld.y = d.y;
-    c->ld.m = d.m;
-    fail_unless(is_comment_in_last_q(*c) == false, "is_last_q");
-    c->ld.m -= 3;
-    if (c->ld.m <= 0) {
-        c->ld.m = 12;
+    struct date date = get_current_date();
+    comment->last_date.year = date.year;
+    comment->last_date.month = date.month;
+    fail_unless(is_comment_in_last_quater(*comment) == false, "is_last_quater");
+    comment->last_date.month -= 3;
+    if (comment->last_date.month <= 0) {
+        comment->last_date.month = 12;
     }
-    fail_unless(is_comment_in_last_q(*c) == true, "is_last_q");
+    fail_unless(is_comment_in_last_quater(*comment) == true, "is_last_quater");
 
-    struct date d_last_q, d_cur_q = get_current_date();
-    int last_q_m = d_cur_q.m - 3,
-        last_q_y = d_cur_q.y;
-    if (last_q_m <= 0) {
-        last_q_m = 12;
-        last_q_y -= 1;
+    struct date date_last_quater, date_cur_quater = get_current_date();
+    int last_quater_month = date_cur_quater.month - 3,
+        last_quater_year = date_cur_quater.year;
+    if (last_quater_month <= 0) {
+        last_quater_month = 12;
+        last_quater_year -= 1;
     }
-    d_last_q.y = last_q_y;
-    d_last_q.m = last_q_m;
-    d_last_q.d = 1;
+    date_last_quater.year = last_quater_year;
+    date_last_quater.month = last_quater_month;
+    date_last_quater.day = 1;
     char last_q_sd[32], cur_q_sd[32];
-    format_date(last_q_sd, d_last_q);
-    format_date(cur_q_sd, d_cur_q);
+    format_date(last_q_sd, date_last_quater);
+    format_date(cur_q_sd, date_cur_quater);
 
     const char* fname = "temp_file.txt";
     char data[TEST_BUF_SIZE];
@@ -136,3 +136,4 @@ int main() {
 
     return nf == 0 ? 0 : 1;
 }
+

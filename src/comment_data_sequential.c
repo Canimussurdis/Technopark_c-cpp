@@ -1,3 +1,7 @@
+/*
+* Copyright 2021 Canimussurdis
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -21,7 +25,8 @@ int count_actual_comments(const char* fpath, int avg_score) {
             return -3;
         }
 
-        if (is_comment_in_last_quater(*comment) && comment->average_score > avg_score) {
+        if (is_comment_in_last_quater(*comment) &&
+            comment->average_score > avg_score) {
             filtered_amount++;
         }
         i++;

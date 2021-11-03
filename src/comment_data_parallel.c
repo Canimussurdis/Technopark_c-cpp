@@ -35,7 +35,7 @@ void* thread_count_comments(void* arg) {
             pthread_exit((void*)(uintptr_t)-3);
         }
 
-        if (is_comment_in_last_q(*c) && c->score_average > a->avg_score) {
+        if (is_comment_in_last_q(*c) && c->average_score > a->avg_score) {
             flt_amount++;
         }
         free(a->c_data[i]);  // to free memory as soon as possible

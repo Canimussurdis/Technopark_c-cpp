@@ -52,11 +52,11 @@ START_TEST(comment_data_test) {
     struct comment_data* c = malloc(sizeof(*c));
     fail_unless(parse_comment(c, ok_comment_s) == true, "parse_comment");
     fail_unless(c->id == 9, "parse_comment");
-    fail_unless(abs(c->score_average - 2.56) < 0.01, "parse_comment");
+    fail_unless(abs(c->average_score - 2.56) < 0.01, "parse_comment");
     fail_unless(c->score_amount == 9022, "parse_comment");
     fail_unless(c->ld.y == 2020 && c->ld.m == 6 && c->ld.d == 21,
         "parse_comment");
-    fail_unless(c->score_last == 1, "parse_comment");
+    fail_unless(c->last_score == 1, "parse_comment");
     fail_unless(parse_comment(c, bad_comment_s) == false, "parse_comment");
 
     struct date d = get_current_date();

@@ -63,7 +63,8 @@ START_TEST(comment_data_test) {
     fail_unless(comment->last_date.year == 2020 && comment->last_date.month == 6
                 && comment->last_date.day == 21, "parse_comment");
     fail_unless(comment->last_score == 1, "parse_comment");
-    fail_unless(parse_comment(comment, bad_comment_s) == false, "parse_comment");
+    fail_unless(parse_comment(comment, bad_comment_s) == false,
+    "parse_comment");
 
     struct date date = get_current_date();
     comment->last_date.year = date.year;

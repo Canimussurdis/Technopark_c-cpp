@@ -10,7 +10,7 @@ int to_string(int value, char* string) {
     int len = 0;
     int a[32];
     while (value > 0) {
-        a[len++] = value % 10; 
+        a[len++] = value % 10;
         value /= 10;
     }
     for (int i = len - 1; i >= 0; i--) {

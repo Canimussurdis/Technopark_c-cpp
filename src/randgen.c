@@ -1,3 +1,7 @@
+/* 
+* Copyright 2021 Canimussurdis
+*/
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -20,8 +24,7 @@ int main(int argc, char** argv) {
         int64_t k = strtoll(argv[2], NULL, 10);
         if (k > 0) {
             amount = k;
-        }
-        else {
+        } else {
             printf("Error: incorrect arg for amount!\n");
             return 1;
         }

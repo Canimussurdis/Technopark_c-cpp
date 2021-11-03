@@ -72,3 +72,4 @@ void to_date_format(int value, char* string) {
     string[0] = value % 10 + 48;
     string[2] = 0;
 }
+

@@ -63,12 +63,12 @@ void format_date(char* string, const struct date date) {
     string[len + 7] = 0;
 }
 
-void to_date_format(int value, char* string) {
+void to_date_format(int value, char* str) {
     // 1 <= v <= 99
     // prepends zero if needed and converts to string
-    string[1] = value % 10 + 48;
+    str[1] = value % 10 + 48;
     value /= 10;
-    string[0] = value % 10 + 48;
-    string[2] = 0;
+    str[0] = value % 10 + 48;
+    str[2] = 0;
 }
 

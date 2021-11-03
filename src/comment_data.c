@@ -18,8 +18,8 @@
 #include "include/date_utils.h"
 #include "include/comment_data.h"
 
-bool parse_comment(struct comment_data* comment, char* string) {
-    int var_amount = sscanf(string, "%d %f %d %d-%d-%d %d\n",
+bool parse_comment(struct comment_data* comment, char* str) {
+    int var_amount = sscanf(str, "%d %f %d %d-%d-%d %d\n",
                             &comment->id, &comment->average_score,
                             &comment->score_amount, &comment->last_date.year,
                             &comment->last_date.month, &comment->last_date.day,

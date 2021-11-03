@@ -22,7 +22,7 @@ int month_to_quarter(int month);
 void format_date(char* string, const struct date date);
 
 // convert to date format (for month and day)
-void to_date_format(int value, char* string);
+void to_date_format(int value, char* str);
 
 #endif  // SRC_INCLUDE_DATE_UTILS_H_
 

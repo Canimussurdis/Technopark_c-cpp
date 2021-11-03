@@ -40,7 +40,7 @@ void* thread_count_comments(void* arg) {
             pthread_exit((void*)(uintptr_t)-3);
         }
 
-        if (is_comment_in_last_quater(*comment) && 
+        if (is_comment_in_last_quater(*comment) &&
             comment->average_score > args->avg_score) {
             flt_amount++;
         }
@@ -107,7 +107,6 @@ int count_actual_comments(const char* fpath, int avg_score) {
     }
     free(threads);
     free(c_data);
-    
     return flt_amount;
 }
 

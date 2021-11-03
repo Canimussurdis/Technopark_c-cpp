@@ -13,25 +13,25 @@
 #include "include/date_utils.h"
 #include "include/comment_data.h"
 
-bool parse_comment(struct comment_data* c, char* s) {
-    int var_amount = sscanf(s, "%d %f %d %d-%d-%d %d\n",
-        &c->id, &c->average_score,
-        &c->score_amount,
-        &c->ld.y, &c->ld.m, &c->ld.d,
-        &c->score_last);
+bool parse_comment(struct comment_data* comment, char* string) {
+    int var_amount = sscanf(string, "%d %f %d %d-%d-%d %d\n",
+        &comment->id, &comment->average_score,
+        &comment->score_amount, &comment->last_date.year, 
+        &comment->last_date.month, &comment->last_date.day,
+        &comment->last_score);
 
     return var_amount == 7;
 }
 
-bool is_comment_in_last_q(const struct comment_data c) {
-    int upd_q = month_to_quarter(c.ld.m);
-    struct date cur_date = get_current_date();
-    int last_q = month_to_quarter(cur_date.m) - 1;
-    int q_y = cur_date.y;
-    if (last_q == 0) {
-        last_q = 4;
-        q_y--;
+bool is_comment_in_last_quater(const struct comment_data comment) {
+    int upd_quater = month_to_quarter(comment.last_date.month);
+    struct date current_date = get_current_date();
+    int last_quater = month_to_quarter(current_date.month) - 1;
+    int quater_year = current_date.year;
+    if (last_quater == 0) {
+        last_quater = 4;
+        quater_year--;
     }
 
-    return last_q == upd_q && q_y == c.ld.y;
+    return (last_quater == upd_quater) && (quater_year == comment.last_date.year);
 }

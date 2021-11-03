@@ -1,3 +1,7 @@
+/*
+* Copyright 2021 Canimussurdis
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -16,10 +20,10 @@
 
 bool parse_comment(struct comment_data* comment, char* string) {
     int var_amount = sscanf(string, "%d %f %d %d-%d-%d %d\n",
-        &comment->id, &comment->average_score,
-        &comment->score_amount, &comment->last_date.year, 
-        &comment->last_date.month, &comment->last_date.day,
-        &comment->last_score);
+                            &comment->id, &comment->average_score,
+                            &comment->score_amount, &comment->last_date.year,
+                            &comment->last_date.month, &comment->last_date.day,
+                            &comment->last_score);
 
     return var_amount == 7;
 }
@@ -33,6 +37,6 @@ bool is_comment_in_last_quater(const struct comment_data comment) {
         last_quater = 4;
         quater_year--;
     }
-    return (last_quater == upd_quater) && (quater_year == comment.last_date.year);
+    return last_quater == upd_quater && quater_year == comment.last_date.year;
 }
 

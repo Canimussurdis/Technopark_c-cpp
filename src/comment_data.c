@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <inttypes.h>
 #include <pthread.h>
+
 #ifdef __APPLE__
 #define get_nprocs() 4
 #else

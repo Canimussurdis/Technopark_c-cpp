@@ -6,62 +6,62 @@
 #include "include/comment_data.h"
 #include "include/random_data_gen.h"
 
-void random_data(struct comment_data* c, int rand_years, unsigned* rseed) {
-    struct date cur_d = get_current_date();
+void random_data(struct comment_data* comment, int rand_years, unsigned* rseed) {
+    struct date cur_date = get_current_date();
 
-    c->ld.y = (cur_d.y - rand_years) + rand_r(rseed) % (rand_years + 1);
-    c->ld.m = rand_r(rseed) % 12 + 1;
-    c->ld.d = rand_r(rseed) % 28 + 1;
-    c->average_score = (rand_r(rseed) % 5001) / 1000.0;
-    c->score_amount = rand_r(rseed) % 10000;
-    c->last_score = rand_r(rseed) % 5 + 1;
+    comment->last_date.year = (cur_date.year - rand_years) + rand_r(rseed) % (rand_years + 1);
+    comment->last_date.month = rand_r(rseed) % 12 + 1;
+    comment->last_date.day = rand_r(rseed) % 28 + 1;
+    comment->average_score = (rand_r(rseed) % 5001) / 1000.0;
+    comment->score_amount = rand_r(rseed) % 10000;
+    comment->last_score = rand_r(rseed) % 5 + 1;
 }
 
-int random_data_string(char* s, int s_len, unsigned* rseed) {
-    struct comment_data c;
-    random_data(&c, 2, rseed);
+int random_data_string(char* string, int s_len, unsigned* rseed) {
+    struct comment_data comment;
+    random_data(&comment, 2, rseed);
 
-    if (c.average_score <= 1.0000) {
-        snprintf(s, s_len, "0 0 00-00-0000 0");
+    if (comment.average_score <= 1.0000) {
+        snprintf(string, s_len, "0 0 00-00-0000 0");
     }
     else {
         char buf[255];
-        format_date(buf, c.ld);
-        snprintf(s, s_len,
-            "%0.2f %d %s %d",
-            c.average_score,
-            c.score_amount,
+        format_date(buf, comment.last_date);
+        snprintf(string, s_len, "%0.2f %d %s %d",
+            comment.average_score,
+            comment.score_amount,
             buf,
-            c.last_score);
+            comment.last_score);
     }
 
     return 0;
 }
 
 int create_random_data_file(const char* fpath, int64_t amnt, unsigned* rseed) {
-    FILE* f = fopen(fpath, "w");
-    if (f == NULL) {
+    FILE* file = fopen(fpath, "w");
+    if (file == NULL) {
         return -1;
     }
 
     int s_len = 255;
-    char* s = malloc(s_len * sizeof(s));
-    if (s == NULL) {
-        fclose(f);
+    char* string = malloc(s_len * sizeof(string));
+    if (string == NULL) {
+        fclose(file);
         return -2;
     }
     for (int64_t i = 1; i <= amnt; i++) {
-        s[0] = 0;
-        if (random_data_string(s, s_len, rseed)) {
-            free(s);
-            fclose(f);
+        string[0] = 0;
+        if (random_data_string(string, s_len, rseed)) {
+            free(string);
+            fclose(file);
             return -2;
         }
-        fprintf(f, "%" PRId64 " %s\n", i, s);
+        fprintf(file, "%" PRId64 " %s\n", i, string);
     }
 
-    free(s);
-    fclose(f);
+    free(string);
+    fclose(file);
 
     return 0;
 }
+

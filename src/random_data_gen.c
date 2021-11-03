@@ -23,16 +23,16 @@ void random_data(struct comment_data* comment,
     comment->last_score = rand_r(rseed) % 5 + 1;
 }
 
-int random_data_string(char* string, int s_len, unsigned* rseed) {
+int random_data_string(char* str, int s_len, unsigned* rseed) {
     struct comment_data comment;
     random_data(&comment, 2, rseed);
 
     if (comment.average_score <= 1.0000) {
-        snprintf(string, s_len, "0 0 00-00-0000 0");
+        snprintf(str, s_len, "0 0 00-00-0000 0");
     } else {
         char buf[255];
         format_date(buf, comment.last_date);
-        snprintf(string, s_len, "%0.2f %d %s %d",
+        snprintf(str, s_len, "%0.2f %d %s %d",
             comment.average_score,
             comment.score_amount,
             buf,

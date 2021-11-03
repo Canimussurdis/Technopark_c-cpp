@@ -1,3 +1,7 @@
+/*
+* Copyright 2021 Canimussurdis
+*/
+
 #ifndef SRC_INCLUDE_COMMENT_DATA_H_
 #define SRC_INCLUDE_COMMENT_DATA_H_
 

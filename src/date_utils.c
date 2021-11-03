@@ -1,3 +1,7 @@
+/*
+* Copyright 2021 Canimussurdis
+*/
+
 #include <time.h>
 
 #include "include/date_utils.h"
@@ -32,20 +36,15 @@ int month_to_quarter(int month) {
     // quarters: q1: 1, 2, 3; q2: 4, 5, 6; q3: 7, 8, 9; q4: 10, 11, 12
     if (month <= 0) {
         return -1;
-    }
-    else if (month <= 3) {
+    } else if (month <= 3) {
         return 1;
-    }
-    else if (month <= 6) {
+    } else if (month <= 6) {
         return 2;
-    }
-    else if (month <= 9) {
+    } else if (month <= 9) {
         return 3;
-    }
-    else if (month <= 12) {
+    } else if (month <= 12) {
         return 4;
-    }
-    else {
+    } else {
         return -1;
     }
 }

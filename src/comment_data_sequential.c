@@ -33,3 +33,4 @@ int count_actual_comments(const char* fpath, int avg_score) {
 
     return filtered_amount;
 }
+

@@ -1,3 +1,7 @@
+/* 
+* Copyright 2021 Canimussurdis
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -25,7 +29,8 @@ int read_file(char*** p_str_arr, const char* fpath) {
     do {
         if (ln_amount >= current_size) {
             current_size *= 2;
-            char** new_ptr = realloc(comment_data, current_size * sizeof(*comment_data));
+            char** new_ptr = realloc(comment_data, current_size *
+                                     sizeof(*comment_data));
             if (new_ptr == NULL) {
                 free_arr((void**)comment_data, ln_amount);
                 free(comment_data);
@@ -43,7 +48,7 @@ int read_file(char*** p_str_arr, const char* fpath) {
         ln_amount++;
     } while (res != NULL);
     ln_amount--;
-    free(comment_data[ln_amount]);  
+    free(comment_data[ln_amount]);
     fclose(fp);
 
     *p_str_arr = comment_data;

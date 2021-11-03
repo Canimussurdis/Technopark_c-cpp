@@ -15,7 +15,7 @@
 
 bool parse_comment(struct comment_data* c, char* s) {
     int var_amount = sscanf(s, "%d %f %d %d-%d-%d %d\n",
-        &c->id, &c->score_average,
+        &c->id, &c->average_score,
         &c->score_amount,
         &c->ld.y, &c->ld.m, &c->ld.d,
         &c->score_last);

@@ -2,17 +2,22 @@
 #define SRC_INCLUDE_DATE_UTILS_H_
 
 struct date {
-    int d, m, y;
+    int day, month, year;
 };
 
-int to_string(int v, char* s);
+// convert to string format (for year)
+int to_string(int v, char* string);
 
+// get the current date
 struct date get_current_date();
 
-int month_to_quarter(int m);
+// convert month to quarter: 1 to 4
+int month_to_quarter(int month);
 
-void format_date(char* s, const struct date d);
+// formatting date "year-month-day"
+void format_date(char* string, const struct date date);
 
-void to_date_format(int v, char* s);
+// convert to date format (for month and day)
+void to_date_format(int v, char* string);
 
 #endif  // SRC_INCLUDE_DATE_UTILS_H_

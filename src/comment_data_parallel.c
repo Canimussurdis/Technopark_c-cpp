@@ -1,3 +1,7 @@
+/*
+* Copyright 2021 Canimussurdis
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -36,7 +40,8 @@ void* thread_count_comments(void* arg) {
             pthread_exit((void*)(uintptr_t)-3);
         }
 
-        if (is_comment_in_last_quater(*comment) && comment->average_score > args->avg_score) {
+        if (is_comment_in_last_quater(*comment) && 
+            comment->average_score > args->avg_score) {
             flt_amount++;
         }
         free(args->c_data[i]);  // to free memory as soon as possible
@@ -101,8 +106,8 @@ int count_actual_comments(const char* fpath, int avg_score) {
         arg[i] = NULL;
     }
     free(threads);
-    free(c_data);  
-
+    free(c_data);
+    
     return flt_amount;
 }
 
